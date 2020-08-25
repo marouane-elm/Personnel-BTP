@@ -1,9 +1,9 @@
 package com.btp.PersonnelBTP.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
-import java.util.ArrayList;
 import java.util.List;
 
 @Entity(name="equipes")
@@ -12,28 +12,31 @@ public class Equipe {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long equipe_id;
+    private Long equipeId;
 
     @Column(unique = true, nullable = false)
-    private String equipe_libelle;
+    private String libelle;
 
-    @OneToMany(mappedBy="salarie_equipe",cascade=CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy="equipe",cascade={CascadeType.PERSIST,CascadeType.REFRESH,CascadeType.DETACH}, fetch = FetchType.LAZY)
     private List<Salarie> membres;
 
-    public Long getEquipe_id() {
-        return equipe_id;
+    @OneToMany(mappedBy="equipe",cascade={CascadeType.PERSIST,CascadeType.REFRESH,CascadeType.DETACH}, fetch = FetchType.LAZY)
+    private List<Mission> missions;
+
+    public Long getEquipeId() {
+        return equipeId;
     }
 
-    public void setEquipe_id(Long equipe_id) {
-        this.equipe_id = equipe_id;
+    public void setEquipeId(Long equipeId) {
+        this.equipeId = equipeId;
     }
 
-    public String getEquipe_libelle() {
-        return equipe_libelle;
+    public String getLibelle() {
+        return libelle;
     }
 
-    public void setEquipe_libelle(String equipe_libelle) {
-        this.equipe_libelle = equipe_libelle;
+    public void setLibelle(String libelle) {
+        this.libelle = libelle;
     }
 
     public List<Salarie> getMembres() {
@@ -42,5 +45,13 @@ public class Equipe {
 
     public void setMembres(List<Salarie> membres) {
         this.membres = membres;
+    }
+
+    public List<Mission> getMissions() {
+        return missions;
+    }
+
+    public void setMissions(List<Mission> missions) {
+        this.missions = missions;
     }
 }

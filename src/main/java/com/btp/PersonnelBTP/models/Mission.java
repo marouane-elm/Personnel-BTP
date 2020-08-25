@@ -1,5 +1,6 @@
 package com.btp.PersonnelBTP.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
@@ -10,16 +11,48 @@ public class Mission {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long mission_id;
+    private Long missionId;
 
-    @Column(unique = true, nullable = false)
-    private String mission_libelle;
+    @Column(nullable = false)
+    private String libelle;
 
-    @Column(unique = true, nullable = false)
-    private String mission_duree;
+    @Column(nullable = false)
+    private String duree;
 
-    @OneToOne
-    @JoinColumn(name = "equipe_id")
-    private Equipe mission_equipe;
+    @ManyToOne()
+    @JoinColumn(name = "equipeId", nullable = true)
+    @JsonIgnore
+    private Equipe equipe;
 
+    public Long getMissionId() {
+        return missionId;
+    }
+
+    public void setMissionId(Long missionId) {
+        this.missionId = missionId;
+    }
+
+    public String getLibelle() {
+        return libelle;
+    }
+
+    public void setLibelle(String libelle) {
+        this.libelle = libelle;
+    }
+
+    public String getDuree() {
+        return duree;
+    }
+
+    public void setDuree(String duree) {
+        this.duree = duree;
+    }
+
+    public Equipe getEquipe() {
+        return equipe;
+    }
+
+    public void setEquipe(Equipe equipe) {
+        this.equipe = equipe;
+    }
 }

@@ -1,8 +1,8 @@
 package com.btp.PersonnelBTP.models;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 import javax.persistence.*;
 import java.sql.Date;
@@ -13,113 +13,111 @@ public class Salarie {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long salarie_id;
+    private Long salarieId;
 
     @Column(unique = true, nullable = false)
-    private String salarie_CIN;
+    private String cin;
 
-    private String salarie_prenom;
-    private String salarie_nom;
+    private String prenom;
+    private String nom;
 
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "MM-dd-yyyy")
-    private Date salarie_dateNaissance;
+    private Date dateNaissance;
 
-    private String salarie_adresse;
-
-    @Column(unique = true, nullable = false)
-    private String salarie_tel;
+    private String adresse;
 
     @Column(unique = true, nullable = false)
-    private String salarie_email;
+    private String numTel;
+
+    @Column(unique = true, nullable = false)
+    private String email;
 
     @ManyToOne()
-    @JoinColumn(name="equipe_id", nullable = false)
-    @JsonIgnore
-    private Equipe salarie_equipe;
+    @JoinColumn(name="equipeId", nullable = true)
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+    private Equipe equipe;
 
     @ManyToOne()
-    @JoinColumn(name="role_id", nullable = false)
-    private Role salarie_role;
+    @JoinColumn(name="roleId", nullable = true)
+    private Role role;
 
-
-    public Long getSalarie_id() {
-        return salarie_id;
+    public Long getSalarieId() {
+        return salarieId;
     }
 
-    public void setSalarie_id(Long salarie_id) {
-        this.salarie_id = salarie_id;
+    public void setSalarieId(Long salarieId) {
+        this.salarieId = salarieId;
     }
 
-    public String getSalarie_CIN() {
-        return salarie_CIN;
+    public String getCin() {
+        return cin;
     }
 
-    public void setSalarie_CIN(String salarie_CIN) {
-        this.salarie_CIN = salarie_CIN;
+    public void setCin(String cin) {
+        this.cin = cin;
     }
 
-    public String getSalarie_prenom() {
-        return salarie_prenom;
+    public String getPrenom() {
+        return prenom;
     }
 
-    public void setSalarie_prenom(String salarie_prenom) {
-        this.salarie_prenom = salarie_prenom;
+    public void setPrenom(String prenom) {
+        this.prenom = prenom;
     }
 
-    public String getSalarie_nom() {
-        return salarie_nom;
+    public String getNom() {
+        return nom;
     }
 
-    public void setSalarie_nom(String salarie_nom) {
-        this.salarie_nom = salarie_nom;
+    public void setNom(String nom) {
+        this.nom = nom;
     }
 
-    public Date getSalarie_dateNaissance() {
-        return salarie_dateNaissance;
+    public Date getDateNaissance() {
+        return dateNaissance;
     }
 
-    public void setSalarie_dateNaissance(Date salarie_dateNaissance) {
-        this.salarie_dateNaissance = salarie_dateNaissance;
+    public void setDateNaissance(Date dateNaissance) {
+        this.dateNaissance = dateNaissance;
     }
 
-    public String getSalarie_adresse() {
-        return salarie_adresse;
+    public String getAdresse() {
+        return adresse;
     }
 
-    public void setSalarie_adresse(String salarie_adresse) {
-        this.salarie_adresse = salarie_adresse;
+    public void setAdresse(String adresse) {
+        this.adresse = adresse;
     }
 
-    public String getSalarie_tel() {
-        return salarie_tel;
+    public String getNumTel() {
+        return numTel;
     }
 
-    public void setSalarie_tel(String salarie_tel) {
-        this.salarie_tel = salarie_tel;
+    public void setNumTel(String numTel) {
+        this.numTel = numTel;
     }
 
-    public String getSalarie_email() {
-        return salarie_email;
+    public String getEmail() {
+        return email;
     }
 
-    public void setSalarie_email(String salarie_email) {
-        this.salarie_email = salarie_email;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
-    public Equipe getSalarie_equipe() {
-        return salarie_equipe;
+    public Equipe getEquipe() {
+        return equipe;
     }
 
-    public void setSalarie_equipe(Equipe salarie_equipe) {
-        this.salarie_equipe = salarie_equipe;
+    public void setEquipe(Equipe equipe) {
+        this.equipe = equipe;
     }
 
-    public Role getSalarie_role() {
-        return salarie_role;
+    public Role getRole() {
+        return role;
     }
 
-    public void setSalarie_role(Role salarie_role) {
-        this.salarie_role = salarie_role;
+    public void setRole(Role role) {
+        this.role = role;
     }
-
 }

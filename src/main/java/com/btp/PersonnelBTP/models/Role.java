@@ -5,7 +5,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
-import java.util.ArrayList;
+import javax.validation.constraints.Size;
 import java.util.List;
 
 @Entity(name="roles")
@@ -14,40 +14,40 @@ public class Role {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long role_id;
+    private Long roleId;
 
     @Column(unique = true, nullable = false)
-    private String role_libelle;
+    @Size(min=2, message="libelle doit avoir min deux caracteres")
+    private String libelle;
 
-    @Column(unique = true, nullable = false)
-    private Float role_salaire;
+    private Float salaire;
 
-    @OneToMany(mappedBy="salarie_role",cascade=CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy="role",cascade={CascadeType.PERSIST,CascadeType.REFRESH,CascadeType.DETACH}, fetch = FetchType.LAZY)
     @JsonIgnore
     private List<Salarie> salaries;
 
-    public Long getRole_id() {
-        return role_id;
+    public Long getRoleId() {
+        return roleId;
     }
 
-    public void setRole_id(Long role_id) {
-        this.role_id = role_id;
+    public void setRoleId(Long roleId) {
+        this.roleId = roleId;
     }
 
-    public String getRole_libelle() {
-        return role_libelle;
+    public String getLibelle() {
+        return libelle;
     }
 
-    public void setRole_libelle(String role_libelle) {
-        this.role_libelle = role_libelle;
+    public void setLibelle(String libelle) {
+        this.libelle = libelle;
     }
 
-    public Float getRole_salaire() {
-        return role_salaire;
+    public Float getSalaire() {
+        return salaire;
     }
 
-    public void setRole_salaire(Float role_salaire) {
-        this.role_salaire = role_salaire;
+    public void setSalaire(Float salaire) {
+        this.salaire = salaire;
     }
 
     public List<Salarie> getSalaries() {
