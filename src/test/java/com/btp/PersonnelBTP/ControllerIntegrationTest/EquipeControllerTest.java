@@ -49,7 +49,7 @@ public class EquipeControllerTest {
         assertEquals(jsonExemple, response.getBody());
 
     }
-
+/*
     @Test
     public void addEquipe() throws MalformedURLException {
 
@@ -82,4 +82,6 @@ public class EquipeControllerTest {
         assertEquals(actual, "l'équipe est supprimée ");
 
     }
+
+ */
 }

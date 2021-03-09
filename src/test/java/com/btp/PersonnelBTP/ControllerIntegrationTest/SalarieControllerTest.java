@@ -58,6 +58,7 @@ public class SalarieControllerTest {
 
     }
 
+/*
     @Test
     public void addSalarie() throws MalformedURLException {
 
@@ -69,11 +70,11 @@ public class SalarieControllerTest {
         final Equipe equipe = new Equipe();
         equipe.setEquipeId((long) 2);
 
-        salarie.setCin("AD188149");
-        salarie.setNumTel("0610203040");
-        salarie.setPrenom("lionel");
-        salarie.setNom("Messi");
-        salarie.setEmail("Messi@gmail.com");
+        salarie.setCin("AD1811149");
+        salarie.setNumTel("0611203040");
+        salarie.setPrenom("ansu");
+        salarie.setNom("fati");
+        salarie.setEmail("anti@gmail.com");
         salarie.setAdresse("Adresse 1");
         salarie.setRole(role);
         salarie.setEquipe(equipe);
@@ -98,7 +99,7 @@ public class SalarieControllerTest {
         HttpEntity<Role> entity = new HttpEntity<Role>(null, headers);
 
         ResponseEntity<String> response = restTemplate.exchange(
-                new URL("http://localhost:" + port + "/api/v1/salaries/10").toString(),
+                new URL("http://localhost:" + port + "/api/v1/salaries/11").toString(),
                 HttpMethod.DELETE, entity, String.class);
 
         String actual = response.getBody();
@@ -106,6 +107,8 @@ public class SalarieControllerTest {
         assertEquals(actual, "salarié est supprimé ");
 
     }
+
+ */
 
 }
 

@@ -43,6 +43,7 @@ public class RoleControllerTest {
 
     }
 
+/*
     @Test
     public void addRole() throws MalformedURLException {
 
@@ -77,5 +78,6 @@ public class RoleControllerTest {
         assertEquals(actual, "Role est supprimé ");
 
     }
+*/
 
 }
