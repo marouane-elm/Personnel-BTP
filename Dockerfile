@@ -1,4 +1,4 @@
-FROM openjdk
-ADD target/btp-personnal.jar btp-personnal.jar
-EXPOSE 8080
-ENTRYPOINT ["java", "-jar", "btp-personnal.jar"]
+FROM openjdk:8
+ADD target/personnel-btp-microservice.jar personnel-btp-microservice.jar
+EXPOSE 8081
+ENTRYPOINT ["java", "-jar", "personnel-btp-microservice.jar"]
