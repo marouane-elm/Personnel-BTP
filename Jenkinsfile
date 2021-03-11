@@ -34,7 +34,7 @@ pipeline {
         }
         stage('run microservice container'){
             steps{
-                bat 'docker container run --network btpnetwork run -p 8081:8081 --net btpnetwork --name btp-personnal-microservice btp-personnal-microservice-image:latest'
+                bat 'docker run --network btpnetwork run -p 8081:8081 --net btpnetwork --name btp-personnal-microservice btp-personnal-microservice-image:latest'
             }
         }
         }
