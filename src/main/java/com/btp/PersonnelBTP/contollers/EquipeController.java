@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/api/v1/equipes")
 public class EquipeController {
-
+// llll
     @Autowired
     EquipeService equipeService;
 
